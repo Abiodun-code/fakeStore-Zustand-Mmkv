@@ -8,11 +8,15 @@ const Home = () => {
     <View style={styles.container}>
       <View style={styles.flatContainer}>
         <FlatList data={data} renderItem={({ item }) => (
-          <TouchableOpacity style={styles.touchable} activeOpacity={0.5}>
+          <TouchableOpacity style={styles.touchable} activeOpacity={0.8}>
           <Image source={{ uri: item.image }} style={styles.image}/>
-          <Text style={styles.text}>{item.title}</Text>
-          <View>
-            <Text>dddd</Text>
+          <View style={styles.textContainer}>
+              <Text style={styles.text}>{item.title.length > 40 ? item.title.slice(0, 40) + "...." : item.title}</Text>
+              <Text>price: {item.price}</Text>
+          </View>
+          <View style={styles.addToCart}>
+            <Text style={styles.cart}>-</Text>
+            <Text style={styles.cart}>+</Text>
           </View>
         </TouchableOpacity>
         )} />
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 4,
     marginVertical: 3,
-    alignItems: "center",
+    // alignItems: "center",
   },
   image:{
     width:wp(20),
@@ -44,7 +48,18 @@ const styles = StyleSheet.create({
     objectFit: "contain"
   },
   text:{
-    flex: 1,
     fontSize: wp(3.9)
+  },
+  textContainer:{
+    flex: 1,
+  },
+  addToCart: {
+    flexDirection: "row",
+    gap: 20,
+    marginVertical: 3,
+    width: wp(18)
+  },
+  cart:{
+    fontSize: wp(12),
   }
 });
