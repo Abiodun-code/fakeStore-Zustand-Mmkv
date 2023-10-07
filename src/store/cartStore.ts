@@ -31,6 +31,7 @@ const useCartStore = create<CartState>((set)=>({
       }
     }
   }),
+
   reduceProduct: (product: Product) => set((state)=>{
     return {
       products: state.products.map(p=> {
@@ -43,12 +44,14 @@ const useCartStore = create<CartState>((set)=>({
       }).filter((p)=> p.quantity > 0)
     }
   }),
+
   clearCart: () => set(()=>{
     return {
       items: 0,
       products: []
     }
-  }),
+  })
+
 }))
 
 export default useCartStore
