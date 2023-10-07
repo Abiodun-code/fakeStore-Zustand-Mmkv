@@ -2,8 +2,11 @@ import React from "react"
 import { View, Text, StyleSheet, FlatList, Pressable, Image, TouchableOpacity } from "react-native"
 import data from "../../assets/data.json"
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen"
+import useCartStore from "../store/cartStore"
+import { Ionicons } from "@expo/vector-icons"
 
 const Home = () => {
+  const {reduceProduct, addProduct, items} = useCartStore()
   return (
     <View style={styles.container}>
       <View style={styles.flatContainer}>
@@ -15,8 +18,12 @@ const Home = () => {
               <Text>price: {item.price}</Text>
           </View>
           <View style={styles.addToCart}>
-            <Text style={styles.cart}>-</Text>
-            <Text style={styles.cart}>+</Text>
+            <TouchableOpacity style={{}} onPress={()=>reduceProduct(item)}>
+              <Ionicons name="remove" color={"black"} size={20}/>
+            </TouchableOpacity>
+              <TouchableOpacity style={{}} onPress={() => addProduct(item)}>
+                <Ionicons name="add" color={"black"} size={20} />
+              </TouchableOpacity>
           </View>
         </TouchableOpacity>
         )} />
@@ -59,7 +66,4 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     width: wp(18)
   },
-  cart:{
-    fontSize: wp(12),
-  }
 });
