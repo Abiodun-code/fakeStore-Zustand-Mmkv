@@ -31,7 +31,6 @@ const Home = () => {
     </View>
   )
 }
-
 export default Home
 
 const styles = StyleSheet.create({
