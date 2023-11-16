@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import NavigationStack from './src/navigations/NavigationStack';
 
 export default function App() {
-  
   return (
     <NavigationStack/>
   );
